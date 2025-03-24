@@ -1,0 +1,8 @@
+netcdf4 
+petitRADTRANS==2.4.9 
+scipy==1.11.2 
+matplotlib==3.7.2 
+ipython 
+ipykernel 
+jupyterlab 
+jupyter
