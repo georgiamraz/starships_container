@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  starships:
+    image: ghcr.io/steob92/starships_container:latest
+    container_name: starships_container
+    # Set the user and user ids
+    user: "${UID}:${GID}"
+    ports:
+      - "8888:8888" # Map container port 8888 to host port 8888 for jupyter lab
+    volumes:
+      - ./data:/home/jovyan/data # Local data mapping
+      - ./data:/home/jovyan/starships_data # Location of the pRT_input_data_path directory
+    restart: always
