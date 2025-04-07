@@ -1,9 +1,9 @@
 # Use the official Python image as the base image
-FROM python:3.10-slim AS bash
+FROM python:3.10-slim AS base
 
 
 # sudo apt install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config
-RUN apt-get update && apt-get install -y emacs git gcc g++ make libhdf5-dev libnetcdf-dev libomp-dev libopenmpi-dev openmpi-bin
+RUN apt-get update && apt-get install -y gosu emacs git gcc g++ make libhdf5-dev libnetcdf-dev libomp-dev libopenmpi-dev openmpi-bin
 # Set the working directory in the container
 WORKDIR /starships
 
@@ -40,25 +40,32 @@ FROM python:3.10-slim AS runtime
 
 # Copy across installed packages from the first stage
 # We only copy across what we need, the rest is discarded in the previous stage
-COPY --from=bash /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
-COPY --from=bash /usr/local/bin /usr/local/bin
-COPY --from=bash /usr/local/lib /usr/local/lib
-COPY --from=bash /usr/local/include /usr/local/include
-COPY --from=bash /usr/local/share /usr/local/share
+COPY --from=base /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=base /usr/local/bin /usr/local/bin
+COPY --from=base /usr/local/lib /usr/local/lib
+COPY --from=base /usr/local/include /usr/local/include
+COPY --from=base /usr/local/share /usr/local/share
+COPY --from=base /usr/sbin/ /usr/sbin/
 
 # Create a test file
 COPY ./test.py /starships/test.py
 
 
 # Create a user jovyan, with a home directory and switch to that user
-RUN useradd -d /home/jovyan -m jovyan
-USER jovyan
-WORKDIR /home/jovyan/
-RUN mkdir -p /home/jovyan/starships_data && mkdir -p /home/jovyan/.local
-ENV pRT_input_data_path=/home/jovyan/starships_data
+# RUN useradd -d /home/jovyan -m jovyan
+# USER jovyan
+# WORKDIR /home/jovyan/
+# RUN mkdir -p /home/jovyan/starships_data && mkdir -p /home/jovyan/.local
+# ENV pRT_input_data_path=/home/jovyan/starships_data
 
 # Create entrypoint to change ownership of the jupyter directory
-RUN chown -R jovyan /home/jovyan/.local && chown -R jovyan /home/jovyan/starships_data
+# RUN chown -R jovyan /home/jovyan/.local && chown -R jovyan /home/jovyan/starships_data
+
+COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+ENV pRT_input_data_path=/home/jovyan/starships_data
 
 EXPOSE 8888
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
