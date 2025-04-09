@@ -3,7 +3,9 @@ FROM python:3.10-slim AS base
 
 
 # sudo apt install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config
-RUN apt-get update && apt-get install -y gosu emacs git gcc g++ make libhdf5-dev libnetcdf-dev libomp-dev libopenmpi-dev openmpi-bin
+RUN apt-get update && apt-get install -y gosu emacs git gcc g++ make libhdf5-dev libnetcdf-dev libomp-dev libopenmpi-dev openmpi-bin 
+
+
 # Set the working directory in the container
 WORKDIR /starships
 
@@ -46,6 +48,7 @@ COPY --from=base /usr/local/lib /usr/local/lib
 COPY --from=base /usr/local/include /usr/local/include
 COPY --from=base /usr/local/share /usr/local/share
 COPY --from=base /usr/sbin/ /usr/sbin/
+COPY --from=base /usr/lib /usr/lib
 
 # Create a test file
 COPY ./test.py /starships/test.py
