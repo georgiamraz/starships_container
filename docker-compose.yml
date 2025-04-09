@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   starships:
-    # image: ghcr.io/steob92/starships_container:latest
-    image: gmraz/starships
+    image: ghcr.io/georgiamraz/starships_container:v0.1.1
+    # image: gmraz/starships
     container_name: starships_container
     # Set the environmental variable to set the user permission
     environment:
