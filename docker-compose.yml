@@ -13,9 +13,8 @@ services:
       - "8091:8091" # Map container port 8888 to host port 8888 for jupyter lab
     volumes:
       - /Users/ronaldmraz/Desktop/STARSHIPS_workshop:/home/jovyan/data # Local data mapping
-      - /Users/ronaldmraz/Desktop/SS_fakedata:/home/jovyan/starships_data # Location of the pRT_input_data_path directory
-    
+      - /Users/ronaldmraz/Desktop/starships_container/starships_container/WASP-127data:/home/jovyan/WASP-127data
+      - /Users/ronaldmraz/Desktop/starships_container/starships_container/Models:/home/jovyan/Models
+      # - /Users/ronaldmraz/Desktop/SS_fakedata:/home/jovyan/starships_data # Location of the pRT_input_data_path directory
+      - /Users/ronaldmraz/Desktop/starships_container/starships_container/param.yaml:/usr/local/lib/python3.10/site-packages/exofile/param.yaml
     command: jupyter notebook --allow-root  --ip=0.0.0.0 --port=8091 --no-browser
-  
-
-    restart: always

@@ -1,0 +1,48 @@
+Attaching to starships_container
+starships_container  | [I 2025-04-04 19:51:26.820 ServerApp] jupyterlab | extension was successfully linked.
+starships_container  | [I 2025-04-04 19:51:26.865 LabApp] JupyterLab extension loaded from /usr/local/lib/python3.10/site-packages/jupyterlab
+starships_container  | [I 2025-04-04 19:51:26.865 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
+starships_container  | [I 2025-04-04 19:51:26.867 LabApp] Extension Manager is 'pypi'.
+starships_container  | [I 2025-04-04 19:51:26.954 ServerApp] jupyterlab | extension was successfully loaded.
+starships_container  | [C 2025-04-04 19:51:26.957 ServerApp] Running as root is not recommended. Use --allow-root to bypass.
+starships_container exited with code 1
+starships_container  | [I 2025-04-04 19:51:28.476 ServerApp] jupyterlab | extension was successfully linked.
+starships_container  | [I 2025-04-04 19:51:28.498 LabApp] JupyterLab extension loaded from /usr/local/lib/python3.10/site-packages/jupyterlab
+starships_container  | [I 2025-04-04 19:51:28.498 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
+starships_container  | [I 2025-04-04 19:51:28.499 LabApp] Extension Manager is 'pypi'.
+starships_container  | [I 2025-04-04 19:51:28.561 ServerApp] jupyterlab | extension was successfully loaded.
+starships_container  | [C 2025-04-04 19:51:28.562 ServerApp] Running as root is not recommended. Use --allow-root to bypass.
+starships_container exited with code 1
+starships_container  | [I 2025-04-04 19:51:30.757 ServerApp] jupyterlab | extension was successfully linked.
+starships_container  | [I 2025-04-04 19:51:30.788 LabApp] JupyterLab extension loaded from /usr/local/lib/python3.10/site-packages/jupyterlab
+starships_container  | [I 2025-04-04 19:51:30.788 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
+starships_container  | [I 2025-04-04 19:51:30.789 LabApp] Extension Manager is 'pypi'.
+starships_container  | [I 2025-04-04 19:51:30.883 ServerApp] jupyterlab | extension was successfully loaded.
+starships_container  | [C 2025-04-04 19:51:30.884 ServerApp] Running as root is not recommended. Use --allow-root to bypass.
+starships_container exited with code 1
+starships_container  | [I 2025-04-04 19:51:32.946 ServerApp] jupyterlab | extension was successfully linked.
+starships_container  | [I 2025-04-04 19:51:32.964 LabApp] JupyterLab extension loaded from /usr/local/lib/python3.10/site-packages/jupyterlab
+starships_container  | [I 2025-04-04 19:51:32.964 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
+starships_container  | [I 2025-04-04 19:51:32.965 LabApp] Extension Manager is 'pypi'.
+starships_container  | [I 2025-04-04 19:51:33.023 ServerApp] jupyterlab | extension was successfully loaded.
+starships_container  | [C 2025-04-04 19:51:33.023 ServerApp] Running as root is not recommended. Use --allow-root to bypass.
+starships_container exited with code 1
+starships_container  | [I 2025-04-04 19:51:35.371 ServerApp] jupyterlab | extension was successfully linked.
+starships_container  | [I 2025-04-04 19:51:35.388 LabApp] JupyterLab extension loaded from /usr/local/lib/python3.10/site-packages/jupyterlab
+starships_container  | [I 2025-04-04 19:51:35.388 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
+starships_container  | [I 2025-04-04 19:51:35.389 LabApp] Extension Manager is 'pypi'.
+starships_container  | [I 2025-04-04 19:51:35.447 ServerApp] jupyterlab | extension was successfully loaded.
+starships_container  | [C 2025-04-04 19:51:35.448 ServerApp] Running as root is not recommended. Use --allow-root to bypass.
+starships_container exited with code 1
+starships_container  | [I 2025-04-04 19:51:38.753 ServerApp] jupyterlab | extension was successfully linked.
+starships_container  | [I 2025-04-04 19:51:38.773 LabApp] JupyterLab extension loaded from /usr/local/lib/python3.10/site-packages/jupyterlab
+starships_container  | [I 2025-04-04 19:51:38.773 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
+starships_container  | [I 2025-04-04 19:51:38.774 LabApp] Extension Manager is 'pypi'.
+starships_container  | [I 2025-04-04 19:51:38.840 ServerApp] jupyterlab | extension was successfully loaded.
+starships_container  | [C 2025-04-04 19:51:38.841 ServerApp] Running as root is not recommended. Use --allow-root to bypass.
+starships_container exited with code 1
+starships_container  | [I 2025-04-04 19:51:43.239 ServerApp] jupyterlab | extension was successfully linked.
+starships_container  | [I 2025-04-04 19:51:43.257 LabApp] JupyterLab extension loaded from /usr/local/lib/python3.10/site-packages/jupyterlab
+starships_container  | [I 2025-04-04 19:51:43.257 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
+starships_container  | [I 2025-04-04 19:51:43.258 LabApp] Extension Manager is 'pypi'.
+Gracefully stopping... (press Ctrl+C again to force)

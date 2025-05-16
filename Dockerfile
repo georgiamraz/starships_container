@@ -68,7 +68,10 @@ COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-ENV pRT_input_data_path=/home/jovyan/starships_data
+# ENV pRT_input_data_path=/home/jovyan/starships_data
+
+COPY dummy_modules /dummy_modules
+ENV PYTHONPATH="/dummy_modules:$PYTHONPATH"
 
 EXPOSE 8888
 WORKDIR /home/jovyan/
