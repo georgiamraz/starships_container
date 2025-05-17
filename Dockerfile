@@ -73,6 +73,6 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 COPY dummy_modules /dummy_modules
 ENV PYTHONPATH="/dummy_modules:$PYTHONPATH"
 
-EXPOSE 8888
+EXPOSE 8091
 WORKDIR /home/jovyan/
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8091", "--no-browser"]
