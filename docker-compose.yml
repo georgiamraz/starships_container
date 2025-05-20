@@ -2,19 +2,27 @@ version: '3.8'
 
 services:
   starships:
+  #set the image name
     image: ghcr.io/georgiamraz/starships_container:v0.1.2
-    # image: gmraz/starships
+
+    #on a Mac, you may need to add the line
+    # platform: linux/amd64
+
+    #set the container name
     container_name: starships_container
+
     # Set the environmental variable to set the user permission
     environment:
       - USER_ID="501"
 
+    # Map container port 
     ports:
-      - "8091:8091" # Map container port 8888 to host port 8888 for jupyter lab
+      - "8091:8091"
     volumes:
 
     #please change this path name to your files
-      - /Users/ronaldmraz/Desktop/STARSHIPS_workshop:/home/jovyan/data # Local data mapping
+    #it should /path/on/your/machine:/path/in/container
+      - /Users/ronaldmraz/Desktop/STARSHIPS_workshop:/home/jovyan/data 
       - /Users/ronaldmraz/Desktop/starships_container/starships_container/WASP-127data:/home/jovyan/WASP-127data
       - /Users/ronaldmraz/Desktop/starships_container/starships_container/Models:/home/jovyan/Models
       - /Users/ronaldmraz/Desktop/starships_container/starships_container/Notebooks:/home/jovyan/Notebooks
