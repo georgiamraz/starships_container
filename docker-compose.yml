@@ -1,30 +1,45 @@
-version: '3.8'
+version: '3.8'  # Docker Compose file format version
 
 services:
   starships:
-  #set the image name
+    # Use a pre-built container image from GitHub Container Registry
     image: ghcr.io/georgiamraz/starships_container:v0.1.2
 
-    #on a Mac, you may need to add the line
+    # Uncomment this line if you are using a Mac to enforce compatibility
     # platform: linux/amd64
 
-    #set the container name
+    # Name for the running container (makes it easier to identify)
     container_name: starships_container
 
-    # Set the environmental variable to set the user permission
+    # Set environment variables inside the container
+    # USER_ID may be required for file permissions, especially when mounting volumes
     environment:
       - USER_ID="501"
 
-    # Map container port 
+    # Map ports: host:container
+    # This makes the Jupyter notebook accessible at http://localhost:8091
     ports:
       - "8091:8091"
-    volumes:
 
-    #please change this path name to your files
-    #it should /path/on/your/machine:/path/in/container
-      - /Users/ronaldmraz/Desktop/STARSHIPS_workshop:/home/jovyan/data 
-      - /Users/ronaldmraz/Desktop/starships_container/starships_container/WASP-127data:/home/jovyan/WASP-127data
-      - /Users/ronaldmraz/Desktop/starships_container/starships_container/Models:/home/jovyan/Models
-      - /Users/ronaldmraz/Desktop/starships_container/starships_container/Notebooks:/home/jovyan/Notebooks
-      - /Users/ronaldmraz/Desktop/starships_container/starships_container/param.yaml:/usr/local/lib/python3.10/site-packages/exofile/param.yaml
-    command: jupyter notebook --allow-root  --ip=0.0.0.0 --port=8091 --no-browser
+    volumes:
+      # Don't change this path
+      - ./data:/home/jovyan
+      
+      # Mount directories and files from the host to the container
+      # Format: /absolute/path/on/host:/path/inside/container
+
+      # Directory with WASP-127 specific data
+      - ./WASP-127data:/home/jovyan/WASP-127data
+
+      # Directory containing model files
+      - ./Models:/home/jovyan/Models
+
+      # Directory with Jupyter notebooks
+      - ./Notebooks:/home/jovyan/Notebooks
+
+      # Parameter file required by the exofile package (overwrite default inside container)
+      - ./param.yaml:/usr/local/lib/python3.10/site-packages/exofile/param.yaml
+
+    # Command to start a Jupyter Notebook server inside the container
+    command: jupyter notebook --allow-root --ip=0.0.0.0 --port=8091 --no-browser
+

@@ -19,7 +19,6 @@ RUN export HDF5_DIR=/usr/include/hdf5 && \
     pip install -r /starships/requirements.txt --no-cache-dir
 
 
-
 # Note: exofile is required to run the starships code.
 # v0.2.2 from pypy is bugged and records the version number as 0.0.0 which throws an error
 # when trying to install starships
@@ -53,26 +52,15 @@ COPY --from=base /usr/lib /usr/lib
 # Create a test file
 COPY ./test.py /starships/test.py
 
-
-# Create a user jovyan, with a home directory and switch to that user
-# RUN useradd -d /home/jovyan -m jovyan
-# USER jovyan
-# WORKDIR /home/jovyan/
-# RUN mkdir -p /home/jovyan/starships_data && mkdir -p /home/jovyan/.local
-# ENV pRT_input_data_path=/home/jovyan/starships_data
-
-# Create entrypoint to change ownership of the jupyter directory
-# RUN chown -R jovyan /home/jovyan/.local && chown -R jovyan /home/jovyan/starships_data
-
+# Install Jupyter Lab and other necessary packages
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# ENV pRT_input_data_path=/home/jovyan/starships_data
-
+# Copy dummy modules to the container
 COPY dummy_modules /dummy_modules
 ENV PYTHONPATH="/dummy_modules:$PYTHONPATH"
 
-EXPOSE 8091
+EXPOSE 8888
 WORKDIR /home/jovyan/
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8091", "--no-browser"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]

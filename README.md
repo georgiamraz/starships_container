@@ -1,43 +1,117 @@
-# starships_container
+# Running the STARSHIPS Container on Your Local Machine
 
+This guide walks you through downloading, modifying, and running the `starships_container` using Docker and VS Code.  
+Please complete these steps before arriving at ExoSlam.  
+If you run into any issues, email georgia.mraz@mail.mcgill.ca or come find us on Day 1 during the debug hour.
 
-## Running Container (From Docker CLI)
+---
 
-```
-> docker run --rm -it -v ./data:/home/jovyan/data -v /path/to/pRT_input_data_path:/home/jovyan/starships_data -p 8888:8888 -u $(id -u):$(id -g) ghcr.io/steob92/starships_container:latest
-```
+## Prerequisites
 
-* `--rm` deletes the container once you've exited.
-* `-it` requires an interactive terminal
-* `-v ./data:/home/jovyan/data` mounts the location of the `./data` directory into the container at `/home/jovyan/data`. 
-* `-v /path/to/pRT_input_data_path:/home/jovyan/starships_data` mounts the location of the `pRT_input_data_path` directory into the container at `/home/jovyan/starships_data`. 
-* `-p 8888:8888` maps port 8888 outside of the container (on the host system, your machine) to port 8888 within the container. To map a different port on the host system, for example port 8001, change this to `-p 8001:8888`.
-* `-u $(id -u):$(id -g)` will set the user id and group id within the container to the same as the user launching the container. This means that you will be able to modify files from within the container without worrying about permission issues.
+- Docker Desktop must be installed and running  
+  Install here: https://docs.docker.com/get-started/get-docker/  
+  Docker is running if you see the whale icon in your system tray (near Wi-Fi/battery).
 
-## Running Container (From Docker Compose)
+- (Optional but Recommended) Install Visual Studio Code (VS Code): https://code.visualstudio.com/
 
-First you should clone this repo or download the `docker-compose.yml` file.
+- Important: You may need to increase Docker's memory allocation  
+  Go to: Docker → Settings → Resources → Adjust the memory sliders.
 
-In the `docker-compose.yml` file, modify the following lines as needed:
+---
 
-```
-    ports:
-      - "8888:8888" # Map container port 8888 to host port 8888 for jupyter lab
-    volumes:
-      - ./data:/home/jovyan/data # Local data mapping
-      - ./data:/home/jovyan/starships_data # Location of the pRT_input_data_path directory
+## Step 1: Clone the Repository
 
-```
+You will need approximately 2 GB of free space.
 
-* Port `8888:8888` maps port 8888 on your machine to port 8888 within the container. To change this port to, for example, port 8001 you would change to `8001:8888`
-* `./data:/home/jovyan/data # Local data mapping` Here `./data` is the path to local directory which will be accessible within the container. For example you might store analysis notebooks here.
-* `./data:/home/jovyan/starships_data`. This is the location of the `pRT_input_data_path` directory needed for `petitRADTRANS`.
+Open your terminal and run:
 
-To lauch the container simply run:
-```
-> UID=$(id -u) GID=$(id -g) docker compose up
+```bash
+git clone -b developeHOST https://github.com/georgiamraz/starships_container.git
+cd starships_container
 ```
 
-`UID=$(id -u) GID=$(id -g)` will set the user id and group id within the container to the same as the user launching the container. This means that you will be able to modify files from within the container without worrying about permission issues.
+Important: Make sure you are on the `developeHOST` branch and not `main`.
 
-To shutdown the container, simply press `ctrl + c`.
+---
+
+## Step 2: Edit `docker-compose.yaml`
+
+Open `docker-compose.yaml` in VS Code or another text editor.  
+Update the volume paths to match your local machine:
+
+```yaml
+volumes:
+  - /absolute/path/to/starships_container/STARSHIPS_workshop:/home/jovyan/data
+  - /absolute/path/to/starships_container/WASP-127data:/home/jovyan/WASP-127data
+  - /absolute/path/to/starships_container/Models:/home/jovyan/Models
+  - /absolute/path/to/starships_container/Notebooks:/home/jovyan/Notebooks
+  - /absolute/path/to/starships_container/param.yaml:/usr/local/lib/python3.10/site-packages/exofile/param.yaml
+```
+
+To get the full path of a directory, navigate into it in your terminal and run `pwd`.
+
+### Mac Users Only
+
+Uncomment this line in `docker-compose.yaml`:
+
+```yaml
+# platform: linux/amd64
+```
+
+Change it to:
+
+```yaml
+platform: linux/amd64
+```
+
+This is necessary for macOS.  
+Windows and Linux users can leave it commented or remove it.
+
+---
+
+## Step 3: (Optional) Modify the Dockerfile
+
+Most users can skip this step.
+
+Only modify the Dockerfile if you're customizing the build. Check that:
+
+- All `COPY` commands reference valid paths
+- The last line starts `jupyter lab` or `jupyter notebook`, depending on your preference
+
+---
+
+## Step 4: Launch the Container
+
+From the root directory (`starships_container`), run:
+
+```bash
+docker compose up
+```
+
+Docker will begin building or launching the container.
+
+If you see a "permission denied" error, run the same command again — it usually works the second time.
+
+---
+
+## Step 5: Open Jupyter Lab
+
+After the container launches, a URL like this will appear in the terminal:
+
+```
+http://127.0.0.1:8091/lab?token=...
+```
+
+Copy and paste the URL into your browser to open Jupyter Lab.
+
+---
+
+## You’re Done
+
+You should now be in a working Jupyter Lab environment and ready to explore the STARSHIPS notebooks.
+
+---
+
+## To Stop the Container
+
+Press `Control + C` in the terminal where the container is running.
