@@ -34,23 +34,10 @@ Important: Make sure you are on the `developeHOST` branch and not `main`.
 
 ---
 
-## Step 2: Edit `docker-compose.yaml`
+## Step 2: Edit `docker-compose.yaml`if needed [Mac Users Only]
 
 Open `docker-compose.yaml` in VS Code or another text editor.  
-Update the volume paths to match your local machine:
 
-```yaml
-volumes:
-  - /absolute/path/to/starships_container/STARSHIPS_workshop:/home/jovyan/data
-  - /absolute/path/to/starships_container/WASP-127data:/home/jovyan/WASP-127data
-  - /absolute/path/to/starships_container/Models:/home/jovyan/Models
-  - /absolute/path/to/starships_container/Notebooks:/home/jovyan/Notebooks
-  - /absolute/path/to/starships_container/param.yaml:/usr/local/lib/python3.10/site-packages/exofile/param.yaml
-```
-
-To get the full path of a directory, navigate into it in your terminal and run `pwd`.
-
-### Mac Users Only
 
 Uncomment this line in `docker-compose.yaml`:
 
@@ -67,20 +54,9 @@ platform: linux/amd64
 This is necessary for macOS.  
 Windows and Linux users can leave it commented or remove it.
 
----
 
-## Step 3: (Optional) Modify the Dockerfile
 
-Most users can skip this step.
-
-Only modify the Dockerfile if you're customizing the build. Check that:
-
-- All `COPY` commands reference valid paths
-- The last line starts `jupyter lab` or `jupyter notebook`, depending on your preference
-
----
-
-## Step 4: Launch the Container
+## Step 3: Launch the Container
 
 From the root directory (`starships_container`), run:
 
