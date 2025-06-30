@@ -1,0 +1,149 @@
+instrum:
+- NIRPS-APERO
+high_res_file_stem_list:
+- retrieval_inputs_2024-02-28-02_maskwings89_masktellu40_pc3
+spectrophotometric_data: null
+photometric_data: null
+retrieval_type: HRR
+white_light: false
+chemical_equilibrium: false
+dissociation: false
+kind_temp: iso
+run_name: WASP127b_simple_tr2
+walker_file_out: walker_steps_WASP127b_simple_tr2_sampling_0.h5
+walker_file_in: /home/opereira/projects/def-rdoyon/opereira/WASP127b/retrievals/DataAnalysis/walker_steps/WASP-127_b/walker_steps_WASP127b_simple_tr2_burnin.h5
+init_mode: from_burnin
+n_cpu: null
+n_walkers: null
+n_walkers_per_cpu: 15
+line_opacities:
+- H2O
+continuum_opacities: []
+other_species: []
+species_in_prior:
+- line_opacities
+pl_name: WASP-127 b
+base_dir: /home/opereira/projects/def-rdoyon/opereira/WASP127b/retrievals
+high_res_path: /home/opereira/scratch/NIRPS-APERO/Reductions/thesis_presentation/WASP-127b
+star_spectrum: null
+slurm_array_behaviour: burnin
+n_steps_burnin: 300
+n_steps_sampling: 1500
+walker_path: null
+params_path: null
+params_file_out: null
+kind_trans: transmission
+opacity_sampling: 4
+orders: null
+pl_params:
+  M_star:
+    value: 0.95
+    unit: M_sun
+  R_star:
+    value: 1.333
+    unit: R_sun
+  Teff:
+    value: 5842
+    unit: K
+  M_pl:
+    value: 0.165
+    unit: M_jup
+  R_pl:
+    value: 1.311
+    unit: R_jup
+  Tp:
+    value: 1400
+    unit: K
+  period:
+    value: 4.178062
+    unit: d
+  trandur:
+    value: 0.181
+    unit: d
+  ap:
+    value: 0.0484
+    unit: au
+  incl:
+    value: 87.85
+    unit: deg
+  excent:
+    value: 0.0
+    unit: null
+  w:
+    value: -90
+    unit: deg
+  RV_sys:
+    value: -8922.97
+    unit: m/s
+linelist_names: null
+limP:
+- -10
+- 2
+n_pts: 50
+fixed_params:
+  gravity: null
+  P0: 0.01
+  log_f: 0.0
+  spec_scale: 1.0
+  e-: 1.0e-06
+  H: 1.0e-99
+  C/O: null
+  Fe/H: null
+  p_cloud: null
+  scat_factor: null
+  tp_gamma: 10.0
+  T_int: 500.0
+  kappa_IR: 0.01
+  tp_delta: 1.0e-07
+  ptrans: 0.001
+  tp_alpha: 0.3
+  akima_P:
+  - 1.0e-10
+  - 1.0e-05
+  - 0.01
+  - 10.0
+  akima_T:
+  - 1000.0
+  - 1500.0
+  - 2000.0
+  - 2500.0
+  kp: 129.95
+  rv: 0.0
+  wind: null
+  phase1: 0.5
+  phase2: 0.75
+  rot_factor: 1.0
+params_prior:
+  H2O:
+  - log_uniform
+  - -12.0
+  - -0.1
+  T_eq:
+  - uniform
+  - 100
+  - 3000
+  kp:
+  - uniform
+  - 70
+  - 250
+  rv:
+  - uniform
+  - -40
+  - 40
+  p_cloud:
+  - log_uniform
+  - -10.0
+  - 2.0
+  R_pl:
+  - gaussian
+  - 1.311
+  - 0.025
+region_id:
+- 1
+reg_params: []
+reg_fixed_params: null
+custom_prior_file: null
+special_init: null
+get_ker_file: null
+starships_version: 1.0.0
+slurm_id: '43884648'
