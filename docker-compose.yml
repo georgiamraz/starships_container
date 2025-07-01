@@ -3,7 +3,7 @@ version: '3.8'  # Docker Compose file format version
 services:
   starships:
     # Use a pre-built container image from GitHub Container Registry
-    image: ghcr.io/georgiamraz/starships_container:v0.1.2
+    image: ghcr.io/georgiamraz/starships_container:latest
 
     # Uncomment this line if you are using a Mac to enforce compatibility
     # platform: linux/amd64
